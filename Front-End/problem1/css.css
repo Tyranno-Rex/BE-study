@@ -1,0 +1,6 @@
+div {
+    /* div는 높이는 내용의 높이를 따른다. 너비는 한줄 다 사용한다. */
+    background-color:red;
+    height:50px;
+    width:300px;
+}

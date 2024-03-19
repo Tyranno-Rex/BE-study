@@ -1,0 +1,38 @@
+.hello {
+    width: auto;
+    border: 1px solid black;
+    border-style: dotted;
+    border-color: red;
+    border-width: 5px;
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: yellow;
+}
+
+.bye {
+    width:auto;
+    border: 1px solid black;
+    border-style: dotted;
+    border-color: blue;
+    border-width: 5px;
+    text-align: center;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: burlywood;
+
+    margin: 10px;
+    padding: 10px;
+}
+
+.seeyoulater{
+    border: 1px solid black;
+    border-style: dotted;
+    border-color: green;
+    border-width: 5px;
+    text-align: right;
+}
+

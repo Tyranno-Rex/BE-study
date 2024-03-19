@@ -1,0 +1,14 @@
+.title {
+    background-color:red;
+    height:100px;
+    width: 100px;
+    font: 20px;
+}
+
+.shit {
+    display: inline-block;
+    background-color:blue;
+    height:100px;
+    width: 200px;
+    font-size: 2rem;
+}
