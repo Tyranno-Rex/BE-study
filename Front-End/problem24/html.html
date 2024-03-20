@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <style>
+            section > div {
+                width: 13%;
+                height: 100px;
+                display: inline-block;
+                margin: 2px;
+            }
+
+            section > div:nth-child(7n + 1) {
+                background-color: red;
+            }
+            section > div:nth-child(7n + 2) {
+                background-color: orange;
+            }
+            section > div:nth-child(7n + 3) {
+                background-color: yellow;
+            }
+            section > div:nth-child(7n + 4) {
+                background-color: green;
+            }
+            section > div:nth-child(7n + 5) {
+                background-color: blue;
+            }
+            section > div:nth-child(7n + 6) {
+                background-color: indigo;
+            }
+            section > div:nth-child(7n + 7) {
+                background-color: violet;
+            }
+            
+
+        </style>
+    </head>
+
+    <body>
+        <section id="container"></section>
+
+        <script>
+            const container = document.getElementById('container');
+            const numberOfDivs = 49;
+    
+            for (let i = 0; i < numberOfDivs; i++) {
+                const div = document.createElement('div');
+                container.appendChild(div);
+            }
+        </script>
+    </body>
+</html>

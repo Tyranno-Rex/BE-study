@@ -1,0 +1,33 @@
+.redbox {
+    background-color: red;
+    border: 10px solid black;
+    width: 30rem;
+    height: 20rem;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: yellow;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.father {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    border: 10px solid black;
+    height: 100vh
+}
+
+.bluebox {
+    background-color: blue;
+    border: 20px solid black;
+    width: 10rem;
+    height: 5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}

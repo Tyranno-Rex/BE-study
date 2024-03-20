@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <style>
+        #button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* 버튼 사이의 간격 */
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            transition: background-color 0.5s;
+        }
+        .button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="button-container"></div>
+
+    <script>
+        // 버튼 컨테이너 요소를 가져옴
+        var buttonContainer = document.getElementById("button-container");
+
+        // 10x10 버튼 생성
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                // 버튼 요소 생성
+                var button = document.createElement("div");
+                button.classList.add("button");
+                buttonContainer.appendChild(button);
+            }
+        }
+    </script>
+</body>
+</html>

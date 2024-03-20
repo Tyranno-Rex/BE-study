@@ -1,0 +1,19 @@
+.redtext {
+    color: red;
+    font-size: 60px;
+}
+
+#bluetext {
+    color: blue;
+    font-size: 60px;
+}
+
+#yellowtext {
+    color: yellow;
+    font-size: 60px;
+}
+
+#greentext {
+    color: green;
+    font-size: 60px;
+}

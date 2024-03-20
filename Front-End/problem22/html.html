@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <style>
+            
+            body {
+                background-color: black;
+            }
+            nav {
+                text-align: center;
+                margin-bottom: 100px;
+            }
+
+            div {
+                width: 100px;
+                height: 100px;
+                background-color: white;
+                display: inline-block;
+                margin: 10px;
+                border-radius: 50%;
+                transition: background-color 0.5s;
+            }
+            
+            div:hover {
+                background-color: black;
+                cursor: pointer;
+            }
+
+            #slideShow2 > div {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                margin: 10px;
+                border-radius: 0%;
+                transition: background-color 0.5s;
+            }
+
+            #slideShow2 > .slider2 {
+                width: 100px;
+                height: 100px;
+                background-color: green;
+                display: inline-block;
+                margin: 10px;
+                transition: background-color 0.5s;
+                border-radius: 50%; /* 추가 */
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav id="slideShow">
+            <div class="slider"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </nav>
+        <nav id="slideShow2">
+            <div class="slider2"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </nav>
+    </body>
+</html>
