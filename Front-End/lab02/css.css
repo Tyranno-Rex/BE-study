@@ -1,0 +1,161 @@
+#first-link-connection {
+    background-color: aquamarine;
+    width: 100%;
+    height: 15rem;
+    position: relative;
+    text-align: center;
+    display: flex; /* 추가 */
+    align-items: center; /* 추가 */
+    justify-content: center; /* 수평 가운데 정렬을 위해 추가 */
+}
+.first-small-box {
+    background-color: white;
+    width: 15%;
+    height: 60%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.first-actual-link-box {
+    background-color: red;
+    width: 60%;
+    height: 50%;
+    margin: 20% auto;
+}
+.first-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.0rem;
+    font-weight: bold;
+    display: block;
+    line-height: 100%;
+    padding: 30% 0;
+}
+
+#second-orange-box {
+    background-color: orange;
+    width: 100%;
+    height: 45rem;
+    position: relative;
+    text-align: center;
+}
+
+.second-small-box1 {
+    background-color: yellow;
+    width: 90%;
+    height: 40%;
+    vertical-align: middle;
+    margin: 0 40px 30px; /* 여기서 마진을 조정합니다. */
+    padding: 10px;
+    text-align: left;
+}
+
+.second-small-box2 {
+    background-color: yellow;
+    width: 90%;
+    height: 40%;
+    vertical-align: middle;
+    margin: 0 40px 0px; /* 여기서 마진을 조정합니다. */
+    padding: 10px;
+    text-align: left;
+}
+
+.second-small-list-background {
+    background-color: lightgreen;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    text-align: left;
+}
+
+.second-country-wrapup {
+    background-color: goldenrod;
+    width: 80%;
+    height: 10%;
+    padding: 5px 10px;
+    margin: 10px;
+    text-align: left;
+}
+
+.second-country-list {
+    color: black;
+    text-align: left;
+    font-weight: bold;
+    padding: 10% 0;
+    font-size: 0.8rem;
+    background-color: lightblue; /* 개별 텍스트 요소에 배경색을 지정합니다. */
+    border-radius: 5px; /* 테두리의 모서리를 둥글게 만듭니다. */
+    display: inline-block; /* 텍스트 주위에 배경이 표시되도록 인라인 블록 요소로 표시합니다. */
+    padding: 5px 20px; /* 텍스트 주변의 여백을 지정합니다. */
+    margin: 1px; /* 텍스트 간의 간격을 지정합니다. */
+}
+
+
+#third-blue-letter {
+    width: 100%;
+    height: 300px;
+    background-color: #00BFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: dotted 10px white;
+}
+
+.third-letter-headline {
+    background-color: rgb(34, 168, 52);
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 0px 10px 20px;
+}
+
+.third-lette-title {
+    font-size: 30px;
+    color: white;
+}
+
+.third-blue-letter-outside {
+    width: 80%;
+    background-color: rgb(7, 80, 16);
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    /* padding:  */
+    padding: 0px 10px 20px;
+    margin: 20px;
+}
+
+#third-letter-content {
+    color: white;
+    font-size: 15px;
+}
+
+
+#fourth-red-box {
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourth-red-box-second {
+    background-color: white;
+    width: 90%;
+    height: 60%;
+    display: flex;
+}
+
+.round-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 10px;
+    
+}
