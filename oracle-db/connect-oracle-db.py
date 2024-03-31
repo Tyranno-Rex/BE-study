@@ -1,7 +1,9 @@
-# Oracle DB에 연결
-import oracledb
+from flask import Flask, request, jsonify
+import cx_Oracle
 
-class OracleDBConnecter :
+app = Flask(__name__)
+
+class OracleDBConnecter:
     def __init__(self):
         # 변수 초기화
         self.user = None
@@ -25,7 +27,7 @@ class OracleDBConnecter :
             self.wallet_password = lines[5].strip()
 
         # db 연결
-        self.connection = oracledb.connect(
+        self.connection = cx_Oracle.connect(
             user=self.user,
             password=self.password,
             dsn=self.dsn,
@@ -43,5 +45,14 @@ class OracleDBConnecter :
             result = cursor.fetchall()
         return result
 
-OracleDBConnecter = OracleDBConnecter()
-print(OracleDBConnecter.execute_query("SELECT * FROM ADMIN.\"Class\""))
+db_connector = OracleDBConnecter()
+
+@app.route('/execute_query', methods=['POST'])
+def execute_query():
+    data = request.get_json()
+    query = data['query']
+    result = db_connector.execute_query(query)
+    return jsonify(result)
+
+if __name__ == '__main__':
+    app.run(debug=True)
