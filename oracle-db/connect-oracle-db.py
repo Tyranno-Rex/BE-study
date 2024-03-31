@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import cx_Oracle
+import oracledb
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ class OracleDBConnecter:
             self.wallet_password = lines[5].strip()
 
         # db 연결
-        self.connection = cx_Oracle.connect(
+        self.connection = oracledb.connect(
             user=self.user,
             password=self.password,
             dsn=self.dsn,
@@ -47,7 +47,7 @@ class OracleDBConnecter:
 
 db_connector = OracleDBConnecter()
 
-@app.route('/execute_query', methods=['POST'])
+@app.route('/execute_query', methods=['GET'])
 def execute_query():
     data = request.get_json()
     query = data['query']
@@ -55,4 +55,4 @@ def execute_query():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
