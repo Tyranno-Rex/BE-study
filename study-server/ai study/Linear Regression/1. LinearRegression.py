@@ -1,6 +1,4 @@
 import torch                        # pytorch  
-import torch.nn as nn               # neural network
-import torch.nn.functional as F     # neural network functional
 import torch.optim as optim         # optimizer
 
 
@@ -17,8 +15,6 @@ W = torch.zeros(1, requires_grad=True) # 가중치 초기화
 # print(W)
 b = torch.zeros(1, requires_grad=True) # 편향 초기화
 # print(b)
-
-
 
 nb_epochs = 1000 # 1000번
 for epoch  in range(nb_epochs + 1):
