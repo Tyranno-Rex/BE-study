@@ -39,22 +39,29 @@ class Server:
         else:
             return {"error": "Failed to execute query"}
     
-    def receive_file(client, message):
-        print("start receive file")
-        client.send('Ready to receive file'.encode('ascii'))
-        filename = message.decode('ascii').split('file ')[1]
-        client.send('Ready to receive file size'.encode('ascii'))
-        file_size = client.recv(1024).decode('ascii')
-        print("Receiving file {} with size {}".format(filename, file_size))
-        received_size = 0
-        with open(filename, 'wb') as file:
-            while received_size < int(file_size):
-                file_data = client.recv(1024)
-                received_size += len(file_data)
-                file.write(file_data)
-        print("File received successfully.")
+    def receive_file(self, client):
+        try:
+            client.send('READY'.encode('ascii'))
+            file_size = int(client.recv(1024).decode('ascii'))
+            filename = "test.txt"
+            client.send('OK'.encode('ascii'))
+            received_size = 0
+            with open(filename, 'wb') as file:
+                while received_size < file_size:
+                    file_data = client.recv(1024)
+                    received_size += len(file_data)
+                    file.write(file_data)
+            print("File received successfully.")
+        except Exception as e:
+            print("An error occurred while receiving the file:", e)
 
     def message_handler(self, client, message):
+        print("debug0: {}".format(message.decode('ascii')))
+        
+        # 텍스트 파일 전송 처리
+        if message.decode('ascii').find('file') != -1:
+            self.receive_file(client)
+        
         # 쿼리 진행
         if message.decode('ascii').find('query') != -1:
             # sql 뒤에 오는 문장은 sql 쿼리로 인식
@@ -99,9 +106,6 @@ class Server:
                 if (client in r["clients"]):
                     self.broadcast_in_room(msg.encode('ascii'), r)
 
-        if message.decode('ascii').find('file') != -1:
-            print("djaklsdfjaklsfj")
-            receive_file(client, message)
 
     def handle(self, client):
         while True:
@@ -117,7 +121,7 @@ class Server:
                 self.broadcast("{} people in this room!\n".format(len(nicknames)).encode('ascii'))
                 nicknames.remove(nickname)
                 break
-
+    
     def receive(self):
         while True:
             # 클라이언트 연결 수락
