@@ -4,7 +4,7 @@ import signal, json
 
 app = Flask(__name__)
 
-host = '127.0.0.1'
+host = '0.0.0.0'
 port = 5000
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -12,10 +12,8 @@ server.bind((host, port))
 server.listen()
 
 clients = []
+commander = []
 nicknames = []
-
-class_list = []
-class_joiner = []
 
 class Server:
     def __init__(self):
@@ -41,7 +39,13 @@ class Server:
         while True:
             try:
                 message = client.recv(1024)
-                self.broadcast(message)
+                if (message.decode('ascii') == 'COMMANDER'):
+                    commander.append(client)
+                    print("Commander joined!")
+                else:
+                    self.broadcast(message)
+
+                    
             except:
                 index = clients.index(client)
                 clients.remove(client)
@@ -88,4 +92,4 @@ if __name__ == '__main__':
     sv = Server()
     thread = threading.Thread(target=sv.receive)
     thread.start()
-    app.run(debug=True, threaded=True, port=5000)
+    app.run(debug=True, threaded=True, host='0.0.0.0', port=5001)
