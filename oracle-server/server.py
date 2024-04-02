@@ -20,31 +20,32 @@ class Server:
         self.broadcast = self.broadcast
         self.handle = self.handle
         self.receive = self.receive
-        
-        
-    def get_lecture_info(self, client, questions):
-        answers = []
-        for question in questions:
-            client.send(question.encode('ascii'))
-            answer = client.recv(1024).decode('ascii')
-            answers.append(answer)
-        return answers
     
     def broadcast(self, message):
         for client in clients:
             client.send(message)
-            
-            
+    
+    def send_query(self, query):
+        url = "http://158.180.80.199:5000/execute_query"
+        data = {'query': query}
+        response = requests.get(url, json=data)
+        if (response.status_code == 200):
+            return response.json()
+        else:
+            return {"error": "Failed to execute query"}
+
     def handle(self, client):
         while True:
             try:
                 message = client.recv(1024)
-                if (message.decode('ascii') == 'COMMANDER'):
-                    commander.append(client)
-                    print("Commander joined!")
+                
+                if message.decode('ascii').find('query') != -1:
+                    # sql 뒤에 오는 문장은 sql 쿼리로 인식
+                    query = message.decode('ascii').split('query ')[1]
+                    result = json.dumps(self.send_query(query))
+                    self.broadcast(result.encode('ascii'))
                 else:
                     self.broadcast(message)
-
                     
             except:
                 index = clients.index(client)
@@ -62,18 +63,16 @@ class Server:
             client, address = server.accept()
             print("Connected with {}".format(str(address)))
             
-            
             client.send('NICKNAME'.encode('ascii'))
+
             nickname = client.recv(1024).decode('ascii')
             nicknames.append(nickname)
             clients.append(client)
-            
             
             print("Nickname is {}".format(nickname))
             self.broadcast("{} joined!\n".format(nickname).encode('ascii'))
             self.broadcast("{} people in this room!\n".format(len(nicknames)).encode('ascii'))
             client.send('Connected to server!'.encode('ascii'))
-            
             
             thread = threading.Thread(target=self.handle, args=(client,))
             thread.start()
