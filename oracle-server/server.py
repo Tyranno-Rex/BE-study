@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import socket, threading, sys, requests
 import signal, json
+from collections import deque
 
 app = Flask(__name__)
 
@@ -12,8 +13,8 @@ server.bind((host, port))
 server.listen()
 
 clients = []
-commander = []
 nicknames = []
+room_list = []
 
 class Server:
     def __init__(self):
@@ -24,6 +25,55 @@ class Server:
     def broadcast(self, message):
         for client in clients:
             client.send(message)
+    
+    def broadcast_in_room(self, message, room):
+        for client in room["clients"]:
+            client.send(message)
+    
+    def message_handler(self, client, message):
+        # 쿼리 진행
+        if message.decode('ascii').find('query') != -1:
+            # sql 뒤에 오는 문장은 sql 쿼리로 인식
+            query = message.decode('ascii').split('query ')[1]
+            result = json.dumps(self.send_query(query))
+            self.broadcast(result.encode('ascii'))
+        
+        # 방 생성
+        if message.decode('ascii').find('room') != -1:
+            # room 뒤에 오는 문장은 방 이름으로 인식
+            room = message.decode('ascii').split('room ')[1]
+            if (room not in room_list):
+                room = {"room": room, "clients": []}
+                room["clients"].append(client)
+                room_list.append(room)
+                self.broadcast("Room {} is created!\n".format(room).encode('ascii'))
+            else:
+                self.broadcast("Room {} is already created!\n".format(room).encode('ascii'))
+        
+        # 방 참여
+        if message.decode('ascii').find('join') != -1:
+            room = message.decode('ascii').split('join ')[1]
+            for r in room_list:
+                if (r["room"] == room):
+                    r["clients"].append(client)
+                    self.broadcast_in_room("Someone joined room {}!\n".format(room).encode('ascii'), r)
+                    break
+        
+        # 방 나가기
+        if message.decode('ascii').find('leave') != -1:
+            room = message.decode('ascii').split('leave ')[1]
+            for r in room_list:
+                if (r["room"] == room):
+                    r["clients"].remove(client)
+                    self.broadcast_in_room("Someone left room {}!\n".format(room).encode('ascii'), r)
+                    break
+        
+        # 방 대화
+        if message.decode('ascii').find('talk') != -1:
+            msg = message.decode('ascii').split('talk ')[1]
+            for r in room_list:
+                if (client in r["clients"]):
+                    self.broadcast_in_room(msg.encode('ascii'), r)
     
     def send_query(self, query):
         url = "http://158.180.80.199:5000/execute_query"
@@ -38,15 +88,7 @@ class Server:
         while True:
             try:
                 message = client.recv(1024)
-                
-                if message.decode('ascii').find('query') != -1:
-                    # sql 뒤에 오는 문장은 sql 쿼리로 인식
-                    query = message.decode('ascii').split('query ')[1]
-                    result = json.dumps(self.send_query(query))
-                    self.broadcast(result.encode('ascii'))
-                else:
-                    self.broadcast(message)
-                    
+                self.message_handler(client, message)
             except:
                 index = clients.index(client)
                 clients.remove(client)
