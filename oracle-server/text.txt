@@ -1,0 +1,25 @@
+lecture title: oracle cloud
+1. what is the subnet mask : 
+subnet mask is a 32-bit number that is used to distinguish the network portion of an IP address from the host portion of the IP address. 
+The subnet mask is used to determine whether a host is on the local subnet or on a remote network.
+The subnet mask is used in conjunction with the IP address to determine the network address and the host address. 
+The subnet mask is used to divide the IP address into two parts: the network address and the host address. 
+The network address is used to identify the network that the host is on, and the host address is used to identify the host on the network. 
+The subnet mask is used to determine the network address by performing a bitwise AND operation on the IP address and the subnet mask. 
+The result of the bitwise AND operation is the network address. 
+The subnet mask is also used to determine the host address by performing a bitwise AND operation on the IP address and the inverse of the subnet mask. 
+The result of the bitwise AND operation is the host address. 
+The subnet mask is represented in dotted decimal notation, where each octet is represented by a decimal number between 0 and 255. 
+
+2. what is the difference between a subnet mask and a default gateway :
+The subnet mask is used to determine the network address and the host address of an IP address, while the default gateway is used to route traffic between different networks.
+The subnet mask is used to divide the IP address into two parts: the network address and the host address.
+The default gateway is used to route traffic between different networks by forwarding packets to the appropriate network.
+The subnet mask is used to determine whether a host is on the local subnet or on a remote network, while the default gateway is used to route traffic between different networks.
+The subnet mask is used in conjunction with the IP address to determine the network address and the host address, while the default gateway is used to route traffic between different networks.
+
+3. what is the difference between a subnet mask and a subnet :
+The subnet mask is a 32-bit number that is used to distinguish the network portion of an IP address from the host portion of the IP address, while a subnet is a logical subdivision of an IP network.
+The subnet mask is used to determine the network address and the host address of an IP address, while a subnet is used to divide an IP network into smaller, more manageable subnetworks.
+The subnet mask is used in conjunction with the IP address to determine the network address and the host address, while a subnet is used to group hosts together based on their IP addresses.
+The subnet mask is represented in dotted decimal notation, where each octet is represented by a decimal number between 0 and 255, while a subnet is represented by a subnet address and a subnet mask.

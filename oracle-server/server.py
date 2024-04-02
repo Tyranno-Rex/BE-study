@@ -30,6 +30,30 @@ class Server:
         for client in room["clients"]:
             client.send(message)
     
+    def send_query(self, query):
+        url = "http://158.180.80.199:5000/execute_query"
+        data = {'query': query}
+        response = requests.get(url, json=data)
+        if (response.status_code == 200):
+            return response.json()
+        else:
+            return {"error": "Failed to execute query"}
+    
+    def receive_file(client, message):
+        print("start receive file")
+        client.send('Ready to receive file'.encode('ascii'))
+        filename = message.decode('ascii').split('file ')[1]
+        client.send('Ready to receive file size'.encode('ascii'))
+        file_size = client.recv(1024).decode('ascii')
+        print("Receiving file {} with size {}".format(filename, file_size))
+        received_size = 0
+        with open(filename, 'wb') as file:
+            while received_size < int(file_size):
+                file_data = client.recv(1024)
+                received_size += len(file_data)
+                file.write(file_data)
+        print("File received successfully.")
+
     def message_handler(self, client, message):
         # 쿼리 진행
         if message.decode('ascii').find('query') != -1:
@@ -74,15 +98,10 @@ class Server:
             for r in room_list:
                 if (client in r["clients"]):
                     self.broadcast_in_room(msg.encode('ascii'), r)
-    
-    def send_query(self, query):
-        url = "http://158.180.80.199:5000/execute_query"
-        data = {'query': query}
-        response = requests.get(url, json=data)
-        if (response.status_code == 200):
-            return response.json()
-        else:
-            return {"error": "Failed to execute query"}
+
+        if message.decode('ascii').find('file') != -1:
+            print("djaklsdfjaklsfj")
+            receive_file(client, message)
 
     def handle(self, client):
         while True:
@@ -98,7 +117,7 @@ class Server:
                 self.broadcast("{} people in this room!\n".format(len(nicknames)).encode('ascii'))
                 nicknames.remove(nickname)
                 break
-                
+
     def receive(self):
         while True:
             # 클라이언트 연결 수락
