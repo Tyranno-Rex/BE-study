@@ -1,8 +1,9 @@
-import os
 import socket, threading
+import os
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('152.67.212.55', 5000))
+# client.connect(('152.67.212.55', 5000))
+client.connect(('127.0.0.1', 5000))
 nickname = input("Choose your nickname: ")
 
 def receive():
@@ -48,7 +49,9 @@ def write():
     while True:
         message = input('')
         if message.strip().lower().startswith('textfile'):
-            send_file("C:\\Code\\streaming-server\\test\\text.txt")
+            send_file("C:\\Users\\admin\\oracle-client\\video.mp4")
+            # send_file("C:\\Users\\admin\\oracle-client\\images.jpg")
+            # send_file("C:\\Code\\streaming-server\\test\\text.txt")
         else:
             message = '{}: {}'.format(nickname, message)
             client.send(message.encode('ascii'))
