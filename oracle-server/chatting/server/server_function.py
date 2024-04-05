@@ -1,5 +1,6 @@
 import os
 import requests
+import server_function as sf
 
 def broadcast_all(clients, message):
     for client in clients:
@@ -60,3 +61,22 @@ def send_file(receiver_nickname, clients, nicknames, filename):
         print("File not found.")
     except Exception as e:
         print("An error occurred while sending the file:", e)
+
+
+def screen_share(client, clients, nicknames, room_list):
+    try:
+        # client.send('SS READY'.encode('ascii'))
+        laddr = client.getsockname()
+        ip = laddr[0]
+        port = 9999
+        print("ip: {} port: {}".format(ip, port))
+    
+        for room in room_list:
+            if client in room["clients"]:
+                for c in room["clients"]:
+                    if c != client:
+                        c.send('SS START'.encode('ascii'))
+                        c.send(str(ip).encode('ascii'))
+                break
+    except Exception as e:
+        print("An error occurred while sharing the screen:", e)

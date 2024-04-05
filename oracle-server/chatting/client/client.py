@@ -1,76 +1,43 @@
 import socket, threading
 import os
+import client_receiver as cr
+import client_sender as cs
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # client.connect(('152.67.212.55', 5000))
-client.connect(('127.0.0.1', 5000))
+# client.connect(('127.0.0.1', 5000))
+client.connect(('192.168.3.3', 5000))
 nickname = input("Choose your nickname: ")
 
 def receive():
     while True:
         try:
             message = client.recv(1024).decode('ascii')
+            print(message)
             if message == 'NICKNAME':
                 client.send(nickname.encode('ascii'))
             else:
+                # 파일 수신 준비
                 if message == 'FILE RECEIVE READY':
-                    receive_file()
+                    cr.receive_file()
+                # 원격 화면 공유 수신 준비
+                elif message == 'SS START':
+                    cr.receive_screen(client)
                 print(message)
         except:
             print("An error occured!")
             client.close()
             break
 
-def send_file(file_path):
-    try:
-        print("Sending file...")
-        client.send('file'.encode('ascii'))
-        file_size = os.path.getsize(file_path)
-        # 파일 크기 전송
-        client.send(str(file_size).encode('ascii'))
-        # 파일 데이터 전송
-        message = client.recv(1024).decode('ascii')
-        if (message == 'OK'):
-            with open(file_path, 'rb') as file:
-                while True:
-                    file_data = file.read(1024)
-                    print(file_data)
-                    if not file_data:
-                        break
-                    client.sendall(file_data)
-            print("File sent successfully.")
-        else:
-            print("An error occurred while sending the file.")
-
-    except FileNotFoundError:
-        print("File not found.")
-    except Exception as e:
-        print("An error occurred while sending the file:", e)
-
-def receive_file():
-    try:
-        print("Receiving file...")
-        client.send('READY'.encode('ascii'))
-        file_size = int(client.recv(1024).decode('ascii'))
-        filename = "C:/Users/admin/project/oracle/oracle-server/chatting/client/file"
-        client.send('OK'.encode('ascii'))
-        received_size = 0
-        with open(filename, 'wb') as file:
-            while received_size < file_size:
-                file_data = client.recv(1024)
-                received_size += len(file_data)
-                file.write(file_data)
-        print("File received successfully.")
-    except Exception as e:
-        print("An error occurred while receiving the file:", e)
-
 def write():
     while True:
         message = input('')
         if message.strip().lower().startswith('file'):
-            send_file("C:/Users/admin/project/oracle/oracle-server/chatting/client/test.mp4")
-            # send_file("C:\\Users\\admin\\oracle-client\\images.jpg")
-            # send_file("C:\\Code\\streaming-server\\test\\text.txt")
+            cs.send_file(client, "C:/Users/admin/oracle/file.mp4")
+        elif message.strip().lower().startswith('screen'):
+            message = '{}: {}'.format(nickname, message)
+            client.send(message.encode('ascii'))
+            cs.send_screen()
         else:
             message = '{}: {}'.format(nickname, message)
             client.send(message.encode('ascii'))
