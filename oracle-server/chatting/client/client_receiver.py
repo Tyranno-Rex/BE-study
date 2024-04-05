@@ -1,6 +1,6 @@
 import os
 import time
-from vidstream import ScreenShareClient
+from vidstream import StreamingServer
 import threading
 
 def receive_file(client):
@@ -27,9 +27,13 @@ def receive_screen(client):
         ip = client.recv(1024).decode('ascii')
         print(ip)
         time.sleep(2)
-        sender = ScreenShareClient(ip, 9999)
-        t = threading.Thread(target=sender.start_stream)
+        
+        receiver = StreamingServer('0.0.0.0', 9999)
+        t = threading.Thread(target=receiver.start_server)
         t.start()
+
+        while input("") != 'STOP':
+            continue
     except Exception as e:
         print("An error occurred while receiving the screen:", e)
         

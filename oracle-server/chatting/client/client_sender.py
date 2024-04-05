@@ -1,5 +1,5 @@
 import os
-from vidstream import StreamingServer
+from vidstream import ScreenShareClient
 import threading
 
 
@@ -32,12 +32,15 @@ def send_file(client, file_path):
 def send_screen():
     try:
         print("Sending screen...")
-        receiver = StreamingServer('0.0.0.0', 9999)
-        t = threading.Thread(target=receiver.start_server)
+        sender = ScreenShareClient('192.168.3.3', 9999)
+
+        t = threading.Thread(target=sender.start_stream)
         t.start()
+
         while input("") != 'STOP':
             continue
-        receiver.stop_server()
+
+        sender.stop_stream()
             
     except Exception as e:
         print("An error occurred while sending the screen:", e)
