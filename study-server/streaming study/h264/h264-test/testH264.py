@@ -39,22 +39,22 @@ class H264IntegrationTests(unittest.TestCase):
     #     print("IDCT data:\n", tb.block)
     #     assert isclose(tb.block, self.rand_data, rtol = 1).all()
 
-    # def testQuantizer(self):
-    #     # TransformBlock test, test to check quantizer function
-    #     print("Testing quantizer")
+    def testQuantizer(self):
+        # TransformBlock test, test to check quantizer function
+        print("Testing quantizer")
 
-    #     tb = TransformBlock(None, self.grad_data)
-    #     #tb.block = self.grad_data
-    #     print("Original data:\n", tb.block)
-    #     tb.dct()
-    #     print("DCT data:\n", tb.block)
-    #     tb.quantize()
-    #     print("Quantized data:\n", tb.block)
-    #     tb.dequantize()
-    #     print("Dequantized data:\n", tb.block)
-    #     tb.idct()
-    #     print("IDCT data:\n", tb.block)
-    #     assert isclose(tb.block, self.grad_data, rtol=5, atol=5).all()
+        tb = TransformBlock(None, self.grad_data)
+        #tb.block = self.grad_data
+        print("Original data:\n", tb.block)
+        tb.dct()
+        print("DCT data:\n", tb.block)
+        tb.quantize()
+        print("Quantized data:\n", tb.block)
+        tb.dequantize()
+        print("Dequantized data:\n", tb.block)
+        tb.idct()
+        print("IDCT data:\n", tb.block)
+        assert isclose(tb.block, self.grad_data, rtol=5, atol=5).all()
 
     # def testVLCiVLC(self):
         
