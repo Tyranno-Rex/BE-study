@@ -33,7 +33,7 @@ def write():
     while True:
         message = input('')
         if message.strip().lower().startswith('file'):
-            cs.send_file(client, "C:/Users/admin/oracle/file.mp4")
+            cs.send_file(client, "oracle-server\chatting\client\input.mp4")
         elif message.strip().lower().startswith('screen'):
             message = '{}: {}'.format(nickname, message)
             client.send(message.encode('ascii'))
