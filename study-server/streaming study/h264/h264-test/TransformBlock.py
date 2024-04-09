@@ -20,13 +20,13 @@ class TransformBlock():
     # For the encode direction, create a block with an optional preload and size 
     def __init__(self, parent, new_block, kernel_size=4):
         self.parent = parent
-        if (new_block != None).all():
-            self.block = new_block
-            self.state = "Spatial"
-        else:
-            self.block = zeros((kernel_size, kernel_size))
+        # if (new_block != None).all():
+        self.block = new_block
+        self.state = "Spatial"
+        # else:
+        #     self.block = zeros((kernel_size, kernel_size))
 
-        assert self.block.shape == (kernel_size, kernel_size)
+        # assert self.block.shape == (kernel_size, kernel_size)
 
         self.prediction_mode = "PCM"
         self.kernel_size = kernel_size
