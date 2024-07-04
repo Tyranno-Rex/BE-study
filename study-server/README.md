@@ -5,44 +5,55 @@ This repository contains various projects and studies related to AI, video strea
 ## Directory Structure
 
 ```plaintext
-├── ai-study
-│   ├── Linear Regression
-│   └── Logisitic Regression
-├── oracle
-│   └── oracle-server
-│       └── ChattingAndStreaming
-│           ├── client
-│           └── server
-│               └── h264
-│                   └── database
-├── streaming-study
-│   ├── codec
-│   ├── h264
-│   │   ├── else-tests
-│   │   ├── h264-library
-│   │   ├── h264-test
-│   │   └── sequences
-│   ├── network and process
-│   ├── oracle-server-connection
-│   └── thread and process
-└── tasu
-    ├── api
-    ├── app
-    │   └── templates
-    │       └── map
-    ├── machine learning
-    ├── main
-    ├── map
-    │   └── map_db
+├─ai study
+│  ├─Linear Regression
+│  ├─Logisitic Regression
+│  └─Project
+│      └─tasu
+│          ├─api
+│          ├─app
+│          │  └─templates
+│          │      └─map
+│          ├─machine learning
+│          ├─main
+│          ├─map
+│          │  └─map_db
+│          └─mongodb
+├─oracle
+│  └─oracle-server
+│      └─ChattingAndStreaming
+│          ├─client
+│          └─server
+│              └─h264
+│                  └─database
+└─streaming study
+    ├─codec
+    ├─h264
+    │  ├─else-tests
+    │  ├─h264-libraray
+    │  ├─h264-test
+    │  └─sequences
+    ├─network and process
+    ├─oracle-server-connection
+    └─thread and process
 ```
 
 ## Project Overviews
 
 ### AI Study
-This directory contains summaries and implementations of two fundamental machine learning algorithms:
+This directory contains summaries and implementations of machine learning algorithms:
 
 - **Linear Regression**: Implementation and analysis of linear regression.
 - **Logistic Regression**: Implementation and analysis of logistic regression.
+- **tasu**: Data analysis and visualization using public APIs.
+  This project involves analyzing and visualizing data from Daejeon's public bicycle API:
+  - *api*: API interactions and data fetching.
+  - *app*:
+    - **templates/map**: HTML templates for data visualization on maps.
+  - *machine learning*: Data analysis and clustering using machine learning techniques.
+  - *main*: Main application logic.
+  - *map*:
+    - **map_db**: Database operations for map-related data.
 
 ### Oracle
 This project involves creating a server that supports chatting and video streaming functionalities:
@@ -65,17 +76,6 @@ This directory contains studies and experiments related to video streaming techn
 - **network and process**: Study of network protocols and processing related to streaming.
 - **oracle-server-connection**: Exploring connections and interactions with the Oracle server.
 - **thread and process**: Analysis of multithreading and multiprocessing in streaming.
-
-### Tasu
-This project involves analyzing and visualizing data from Daejeon's public bicycle API:
-
-- **api**: API interactions and data fetching.
-- **app**:
-  - **templates/map**: HTML templates for data visualization on maps.
-- **machine learning**: Data analysis and clustering using machine learning techniques.
-- **main**: Main application logic.
-- **map**:
-  - **map_db**: Database operations for map-related data.
 
 ## Contributing
 
