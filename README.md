@@ -64,7 +64,4 @@ This repository is licensed under the MIT License. See the `LICENSE` file for mo
 
 PROJECT COMPLETION STATUS : TRUE
 MULIT PROJECTS : TRUE
-
-1. 'study-database': 'database'
-2. 'study-os': 'os'
-3. 'study-server': ['ai', 'network', 'backend', 'implement', 'cloud']
+SUB PROJECTS : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-os/This-is-the-Linux', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
