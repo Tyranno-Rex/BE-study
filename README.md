@@ -53,6 +53,18 @@ To get started with any of the projects, navigate to the respective directory an
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or additions.
 
+
 ## License
 
 This repository is licensed under the MIT License. See the `LICENSE` file for more information.
+
+
+
+## Project Category - for crawling
+
+PROJECT COMPLETION STATUS : TRUE
+MULIT PROJECTS : TRUE
+
+1. 'study-database': 'database'
+2. 'study-os': 'os'
+3. 'study-server': ['ai', 'network', 'backend', 'implement', 'cloud']
