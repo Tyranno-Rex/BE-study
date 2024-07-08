@@ -91,6 +91,6 @@ PROJECT_NAME : Study Server
 PROJECT_DESCRIPTION : This directory encompasses various server-related studies and projects. It includes subdirectories for AI studies, streaming technologies, and Oracle server studies.
 PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
 PROJECT_COMPLETION_STATUS : FALSE
-MULTI_PROJECT : FALSE
+PROJECT_MULTI : FALSE
 PROJECT_SUBPROJECT : NONE
 PROJECT_CATEGORY : 'ai', 'network', 'backend', 'implement', 'cloud'

@@ -66,6 +66,6 @@ PROJECT_NAME : BE-study
 PROJECT_DESCRIPTION : This repository is a collection of studies and projects related to databases, operating systems, and server technologies. The directory structure is organized to facilitate focused learning and development in each of these areas.
 PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study'
 PROJECT_COMPLETION_STATUS : FALSE
-MULIT_PROJECT : TRUE
-SUB_PROJECT : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-os', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
+PROJECT_MULTI : TRUE
+PROJECT_SUBPROJECT : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-os', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
 PROJECT_CATEGORY : NONE
