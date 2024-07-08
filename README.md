@@ -68,4 +68,4 @@ PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study'
 PROJECT_COMPLETION_STATUS : FALSE
 PROJECT_MULTI : TRUE
 PROJECT_SUBPROJECT : study-database, study-os, study-server
-PROJECT_CATEGORY : NONE
+PROJECT_CATEGORY : 'NONE'

@@ -12,4 +12,4 @@ PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database'
 PROJECT_COMPLETION_STATUS : FALSE
 PROJECT_MULTI : FALSE
 PROJECT_SUBPROJECT : NONE
-PROJECT_CATEGORY : "database"
+PROJECT_CATEGORY : 'database'
