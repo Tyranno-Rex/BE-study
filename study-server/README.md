@@ -84,3 +84,13 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This repository is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## Project Crawling
+
+PROJECT_NAME : Study Server
+PROJECT_DESCRIPTION : This directory encompasses various server-related studies and projects. It includes subdirectories for AI studies, streaming technologies, and Oracle server studies.
+PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
+PROJECT_COMPLETION_STATUS : FALSE
+MULTI_PROJECT : FALSE
+PROJECT_SUBPROJECT : NONE
+PROJECT_CATEGORY : 'ai', 'network', 'backend', 'implement', 'cloud'
