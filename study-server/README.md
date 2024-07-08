@@ -87,7 +87,7 @@ This repository is licensed under the MIT License. See the `LICENSE` file for mo
 
 ## Project Crawling
 
-PROJECT_NAME : Study Server
+PROJECT_NAME : study-server
 PROJECT_DESCRIPTION : This directory encompasses various server-related studies and projects. It includes subdirectories for AI studies, streaming technologies, and Oracle server studies.
 PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
 PROJECT_COMPLETION_STATUS : FALSE
