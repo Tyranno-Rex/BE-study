@@ -67,7 +67,5 @@ PROJECT_DESCRIPTION : This repository is a collection of studies and projects re
 PROJECT_URL : 'https://github.com/Tyranno-Rex/BE-study'
 PROJECT_COMPLETION_STATUS : FALSE
 MULIT_PROJECTS : TRUE
-SUB_PROJECTS : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database', 
-'https://github.com/Tyranno-Rex/BE-study/tree/main/study-os',
-'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
+SUB_PROJECTS : 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-database', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-os', 'https://github.com/Tyranno-Rex/BE-study/tree/main/study-server'
 PROJECT_CATEGORY : NONE
